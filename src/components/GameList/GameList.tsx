@@ -1,4 +1,5 @@
 import axios from 'axios';
+import React from 'react';
 import { ReactElement, useEffect, useState } from 'react';
 
 import { Game } from '../../types/types';
@@ -11,25 +12,22 @@ export const GameList = (): ReactElement => {
 
   const fetching = async () => {
     try {
-      const res = await axios.get('/game', {
+      const res = await axios.get('/games', {
         baseURL: `https://${API_HOST}/api`,
+        params: { platform: 'browser' },
         headers: {
           'x-rapidapi-key': API_KEY,
           'x-rapidapi-host': API_HOST,
         },
-        params: {
-          platform: 'browser',
-        },
       });
       setGames(res.data);
-    } catch (e) {
-      setErr(e.message);
+    } catch (error) {
+      setErr(error.message);
     }
   };
 
   useEffect(() => {
     fetching();
   }, []);
-
-  return <GameListRender err={err} games={games} />
+  return <GameListRender err={err} games={games} />;
 };
