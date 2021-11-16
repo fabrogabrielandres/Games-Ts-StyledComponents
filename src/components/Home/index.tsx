@@ -3,8 +3,8 @@ import GameList from '../GameList';
 
 export const Home = (): ReactElement => {
   return (
-    <div>
+    <main>
       <GameList /> 
-    </div>
+    </main>
   );
 };
