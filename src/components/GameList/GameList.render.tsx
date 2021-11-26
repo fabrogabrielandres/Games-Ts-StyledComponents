@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ChangeEvent, ReactElement } from 'react';
 
 import { Game } from '../../types/types';
 import { GameCard } from '../GameCard/GameCard';
@@ -9,9 +9,10 @@ import { List, ListItem } from './styles';
 interface Props {
   err?: string;
   games: Game[];
+  onFilterChange: (e: ChangeEvent<HTMLFormElement>) => void;
 }
 
-export const GameListRender = ({ err, games }: Props): ReactElement => {
+export const GameListRender = ({ err, games,onFilterChange }: Props): ReactElement => {
   if (err) {
     return <p>Unable to fetch games</p>;
   }
@@ -20,7 +21,7 @@ export const GameListRender = ({ err, games }: Props): ReactElement => {
   }
   return (
     <>
-      <GameFilter />
+      <GameFilter onChange={onFilterChange}/>
       <List>
         {games.map((game) => (
           <ListItem key={game.id}>
