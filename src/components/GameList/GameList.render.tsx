@@ -2,6 +2,8 @@ import React, { ReactElement } from 'react';
 
 import { Game } from '../../types/types';
 import { GameCard } from '../GameCard/GameCard';
+import { GameFilter } from '../GameFilter';
+
 import { List, ListItem } from './styles';
 
 interface Props {
@@ -17,13 +19,15 @@ export const GameListRender = ({ err, games }: Props): ReactElement => {
     return <p>No games available</p>;
   }
   return (
-    <List>
-      {games.map((game) => (
-        <ListItem key={game.id}>
-          <GameCard content={game} />
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <GameFilter />
+      <List>
+        {games.map((game) => (
+          <ListItem key={game.id}>
+            <GameCard content={game} />
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
-

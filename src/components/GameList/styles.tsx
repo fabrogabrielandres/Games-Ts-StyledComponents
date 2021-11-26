@@ -8,7 +8,6 @@ export const List = styled.div`
   justify-content: space-evenly;
   list-style-type: none;
   box-sizing: border-box;
-  background-color: red;
 
   @media (min-width: ${breakpoints.table}) {
     max-width: ${breakpoints.table};
