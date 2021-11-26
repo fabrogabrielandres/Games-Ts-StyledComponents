@@ -7,7 +7,7 @@ interface Props {
 
 export const GameFilter = ({ onChange }: Props): ReactElement => {
   return (
-    <form>
+    <form onChange={onChange}>
       <label htmlFor="platform-select">
         Platform:
         <select name="platform" id="platform-select">
